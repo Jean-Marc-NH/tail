@@ -6,7 +6,7 @@ template <typename T>
 struct nodo {
     T valor;
     nodo<T>* next;
-    nodo(T v, nodo<T> *n = NULL) {
+    nodo(T v, nodo<T>* n = NULL) {
         valor = v;
         next = n;
     }
@@ -35,9 +35,9 @@ int main()
 
     int x;
 
-    for (int i=0; i < 10; i++) {
-        C.pop(x);
-        cout << x;
+    for (int i = 0; i < 10; i++) {
+        if(C.pop(x))
+        cout << x << "\n";
     }
 }
 
@@ -58,7 +58,7 @@ void cola<T>::push(T v) {
         tail->next = new nodo<T>(v, tail->next);
         tail = tail->next;
     }
-    
+
     if (!head) {
         head = tail;
     }
@@ -66,14 +66,14 @@ void cola<T>::push(T v) {
 }
 
 template<typename T>
-bool cola<T>::pop(T &v) {
+bool cola<T>::pop(T& v) {
     if (!head) {
         cout << "Vacio\n";
-        v = -1;
+        v = NULL;
         return false;
     }
     else {
-        nodo <T> * tmp = head;
+        nodo <T>* tmp = head;
         v = head->valor;
         head = head->next;
         delete tmp;
